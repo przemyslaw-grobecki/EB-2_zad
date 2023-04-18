@@ -14,11 +14,11 @@ import services.ProductsMagazine
 @Singleton
 class ProductsController @Inject()(val magazine: ProductsMagazine,
                                    val controllerComponents: ControllerComponents) extends BaseController {
-  def products(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  def getProducts: Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(Json.toJson(magazine.Get()))
   }
 
-  def product(id : Int): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  def getProduct(id : Int): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(Json.toJson(magazine.Get(Some(id))))
   }
 
